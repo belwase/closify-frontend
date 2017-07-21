@@ -1,0 +1,52 @@
+<div id="new-campaign">
+                <div class="row page-titles">
+                    <div class="col-md-6 col-8 align-self-center">
+                        <h3 class="text-themecolor m-b-0 m-t-0">New Campaign</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item active">Campaign</li>
+                        </ol>
+                    </div>
+                
+                </div>
+
+                
+                <ng-include src="'/static/assets/templates/campaign/navigation.html'"></ng-include>
+
+                <!-- Row -->
+                <div class="row">
+
+                    <h3 class="wizard-subtitle">
+                     Add your list of recipients
+                    </h3>
+
+
+                    <ng-include src="'/static/assets/templates/includes/csv_upload.html'"></ng-include>
+                    <div class="col-md-5">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Recipients</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="recipient in campaign.recipients">
+                            <td>{{recipient.filename}}</td>
+                            <td><a class="btn-md btn-danger" ng-click="removeRecipient(recipient.id)"><strong>Delete</strong></a></td>
+                           
+                          </tr>
+                         
+                        </tbody>
+                      </table>
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+                          <a class="btn-lg btn-danger" ng-click="new_campaign_compose()" ng-show="campaign.recipients.length"><strong>Next</strong></a>
+                        </div>
+
+
+</div>

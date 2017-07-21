@@ -1,0 +1,92 @@
+<footer ng-controller="footerController">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-3">
+                <h3>Need help?</h3>
+                <!--<a href="tel://004542344599" id="phone">+45 423 445 99</a>-->
+                <a href="/faq"><h4>Help Center</h4></a>
+                <a href="mailto:info@gotparking.com" id="email_footer">info@gotparking.com</a>
+            </div>
+            <div class="col-sm col-sm-3">
+                <h3>About Us</h3>
+                <ul>
+                    <li><a ng-href="about-us">About us</a></li>
+                    <li><a ng-href="press">Press</a></li>
+                    <li><a ng-href="careers">Careers</a></li>
+                    <li><a ng-href="blog">Blog</a></li>
+                    <li><a ng-href="help-center">Help Center</a></li>
+
+                </ul>
+            </div>
+            <div class="col-sm col-sm-3">
+                <h3>Partners</h3>
+                <ul>
+                    <li><a ng-href="lot-owners">Lot Owners</a></li>
+                    <li><a ng-href="afiliate-programs">Afiliate Program</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2 col-sm-3">
+                <h3>Top Airports</h3>
+                <ul>
+                    <li ng-repeat="airport in top_airports">
+                        <a href="">{{airport.name}}</a>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+        <!-- End row -->
+        <div><hr></div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <p style="padding-top: 10px; margin-bottom: 0;">© GOT Parking 2017 | <a class="pointer" data-toggle="modal" data-target='#footerterms'>Terms Of Use</a></p>
+            </div>
+            <div class="col-sm-6">
+                <div id="social_footer">
+                    <ul>
+                        <li class="hidden"><a href="#"><i class="icon-facebook"></i></a></li>
+                        <li><a href="http://twitter.com/got_parking"><i class="icon-twitter"></i></a></li>
+                        <li class="hidden"><a href="#"><i class="icon-google"></i></a></li>
+                        <li ><a href="http://instagram.com/gotparking"><i class="icon-instagram"></i></a></li>
+                        <li class="hidden"><a href="#"><i class="icon-pinterest"></i></a></li>
+                        <li class="hidden"><a href="#"><i class="icon-vimeo"></i></a></li>
+                        <li class="hidden"><a href="#"><i class="icon-youtube-play"></i></a></li>
+                        <li class="hidden"><a href="#"><i class="icon-linkedin"></i></a></li>
+                    </ul>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- End row -->
+    </div>
+    <!-- End container -->
+    <div class="modal fade" id="footerterms">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">GotParking.com Terms of Service</h4>
+                </div>
+                <div class="modal-body">
+                    <div ng-bind-html="footerTerms">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End footer -->
+<!-- Google analytics code -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function()
+{ (i[r].q=i[r].q||[]).push(arguments)}
+,i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-100455161-1', 'auto');
+ga('send', 'pageview');
+</script>

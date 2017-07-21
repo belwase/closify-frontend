@@ -1,0 +1,47 @@
+<div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-2 col-md-offset-1 content-form">
+                        <h3 class="text-center">Register</h3>
+                        <br>
+                        <form name="changepswdsubmit" class="style-form" angular-validator-submit="signup_user()" novalidate angular-validator>
+                            <div class="group">
+                                <input type="email" name="email" ng-model="signup.email" autocomplete="off" required required-message="'Email is Required!'" invalid-message="'Email address is Invalid!'">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label>Email Address</label>
+                            </div>
+                            <div class="group">
+                                <input type="password" name="password" ng-model="signup.password" autocomplete="off" required required-message="'Password is Required!'">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label>Password</label>
+                            </div>
+                            <div class="group">
+                                <input type="password" name="password2" ng-model="signup.password2" autocomplete="off" required="" validator="comparePswd(signup.password,signup.password2)" required-message="'Confirm Password is Required!'" invalid-message="'Passwords donot match!'">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label>Confirm Password</label>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8 col-sm-offset-2">
+                                    <button type="submit" class="btn_1 btn-block">Signup</button>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 text-center">
+                                <br><a data-toggle="modal" href='#login-modal' class="forgot-password" data-dismiss="modal">Already have an account? Sign in here</a>
+                            </div>
+                            <br>
+                            <br>
+                            <br>
+                        </form>
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--End row -->
+    </div>
+    <!--End container -->

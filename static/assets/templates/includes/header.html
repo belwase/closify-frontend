@@ -1,0 +1,50 @@
+<!--<ng-include src="'/static/templates/includes/modals.html'" scope="" onload=""></ng-include>-->
+
+
+<header class="topbar">
+            <nav class="navbar top-navbar navbar-toggleable-sm navbar-light">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">
+                        <!-- Logo icon -->
+                        <b>
+                            <img src="/static/assets/img/logo-icon.png" alt="ems" class="dark-logo">
+                            
+                        </b>
+                        <span>
+                            <img src="/static/assets/img/logo-text.png" alt="ems" class="dark-logo">
+                        </span>
+                    </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto mt-md-0 ">
+                        <!-- This is  -->
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                        
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav my-lg-0" ng-hide="user==false">
+                        <li class="nav-item"><a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="/profile">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="/dashboard">Dashboard</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="/profile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/static/assets/img/pp.jpg" alt="user" class="profile-pic m-r-5">AB</a>
+                        </li>
+                        <li class="nav-item"><span class="glyphicon glyphicon-log-out"></span><a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" ng-click="signout()">Logout</a></li>
+                        </div>
+                    </ul>
+                    <ul class="navbar-nav my-lg-0" ng-show="user==false">
+                        <li class="nav-item"><a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="/">Home</a></li>
+                        <li class="nav-item"><span class="glyphicon glyphicon-log-in"></span><a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" ng-href="signin">Login</a></li>
+                        <li class="nav-item"><span class="glyphicon glyphicon-user"></span><a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" ng-href="signup">Signup</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>

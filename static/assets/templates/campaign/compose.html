@@ -1,0 +1,70 @@
+<div id="new-campaign">
+                <div class="row page-titles">
+                    <div class="col-md-6 col-8 align-self-center">
+                        <h3 class="text-themecolor m-b-0 m-t-0">New Campaign</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item active">Campaign</li>
+                        </ol>
+                    </div>
+                
+                </div>
+
+                
+                <ng-include src="'/static/assets/templates/campaign/navigation.html'"></ng-include>
+
+                <!-- Row -->
+                <div class="row">
+
+                    <h3 class="wizard-subtitle">
+                     Compose the emails in this campaign
+                    </h3>
+
+                    <div class="row form-group">
+                              <label class="control-label col-sm-2" for="subject">Subject:</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control mdl-textfield__input" id="subject" ng-model="campaign.message.subject" placeholder="">
+                              </div>
+                    </div>
+
+
+                    <div class="row text-editor">
+                      <wysiwyg-edit content="campaign.message.body" ng-model="campaign.message.body" config="editorConfig"></wysiwyg-edit>
+                    </div>
+                    <br><br>
+                    <div class="row">
+                      <h3>Replies</h3>
+                      <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label class="control-label col-md-8" for="reply_days">Reply X days after initial email:</label>
+                                <div class="col-sm-3">
+                                  <input type="number" class="form-control mdl-textfield__input" id="reply_days" ng-model="campaign.reply.reply_days" placeholder="">
+                                </div>
+                              </div>
+                        </div>
+
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label class="control-label col-md-5" for="receive_flag">Unless we receive:</label>
+                                <div class="col-md-6">
+                                  <select class="form-control" ng-model="campaign.reply.receive_flag" ng-options="flag.name for flag in receive_flags"></select>
+                                </div>
+                              </div>
+                        </div>
+
+
+                      </div>
+                      <div class="row text-editor">
+                        <wysiwyg-edit content="campaign.reply.body" ng-model="campaign.reply.body" config="editorConfig"></wysiwyg-edit>
+                      </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                          <a class="btn-lg btn-danger" ng-click="new_campaign_preview()" ng-show="campaign.recipients.length"><strong>Next</strong></a>
+                        </div>
+
+
+</div>

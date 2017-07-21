@@ -1,0 +1,57 @@
+<div id="new-campaign">
+                <div class="row page-titles">
+                    <div class="col-md-6 col-8 align-self-center">
+                        <h3 class="text-themecolor m-b-0 m-t-0">New Campaign</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item active">Campaign</li>
+                        </ol>
+                    </div>
+                
+                </div>
+
+                <ng-include src="'/static/assets/templates/campaign/navigation.html'"></ng-include>
+                <!-- Row -->
+                <div class="row">
+
+                    <h3 class="wizard-subtitle">
+                      Let's get started!
+                    </h3>
+
+                    <div class="connect-new-account" ng-controller="GoogleAuthCtrl" ng-hide="integrations.length">
+                        <a class="btn-lg btn-danger" ng-click="connect_google()"><strong>+ Connect new Mail account</strong></a>
+                    </div>
+
+
+                    <div class="form-content col-md-5" ng-show="integrations.length">
+                      <div class="row">
+                          <div class="form-group">
+                              <label class="control-label col-sm-2" for="title">Title:</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control mdl-textfield__input" id="title" ng-model="campaign.title" placeholder="">
+                              </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div class="row">
+                           <div class="form-group">
+                              <label class="control-label col-sm-2" for="from_address">From Address:</label>
+                              <div class="col-sm-10">
+                                    <select class="form-control" ng-model="campaign.integration" ng-options="integration.identifier for integration in integrations"></select>
+                              </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div class="row">
+                          <a class="btn-lg btn-danger" ng-click="new_campaign_start()"><strong>Next</strong></a>
+                        </div>
+
+                    </div>
+
+
+
+
+                </div>
+
+
+</div>

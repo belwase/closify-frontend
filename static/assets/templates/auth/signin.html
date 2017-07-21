@@ -1,0 +1,30 @@
+
+    <div class="col-md-5">                
+                <h3>Sign In</h3>
+                <br>
+                <form name="signInSubmit" class="style-form" ng-submit="signin_user()" novalidate angular-validator>
+                    <div class="group">
+                        <input type="text" name="email" ng-model="email" autocomplete="off" required required-message="'Username is Required!'">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Email</label>
+                    </div>
+                    <div class="group">
+                        <input type="password" name="password" ng-model="password" autocomplete="off" required="" required-message="'Password is Required!'">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Password</label>
+                    </div>
+                    <button type="submit" class="btn_1 form-group">Sign In</button>
+                    <div class="bs-callout-danger bg-danger text-danger text-left" ng-show="showLoginError" >
+                        <h4>Wrong Credentials</h4>
+                        <p>Username or Password is wrong</p>
+                    </div>
+                    <div class="col-sm-12">
+                        <a data-dismiss="modal" data-toggle="modal" href='#forgot-modal' class="forgot-password">Forgot Your Password?</a>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                </form>
+    </div>
