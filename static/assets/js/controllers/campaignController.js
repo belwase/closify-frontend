@@ -12,11 +12,15 @@ app.controller('campaignController', ['$scope', '$rootScope', 'toastr', '$http',
     console.log('route' + id)
     
     $scope.campaign = {};
+    $scope.campaigns = [];
     $scope.integrations = null;
 
     $scope.campaign.recipients = [];
     $scope.recipients_counter = 0;
     $scope.recipient_headers = [];
+
+    $scope.template_fields = [];
+
 
     $scope.receive_flags = [{name:'A reply'}, {name: 'An open'}, {name:'A reply or an open'}]
 
@@ -29,6 +33,8 @@ app.controller('campaignController', ['$scope', '$rootScope', 'toastr', '$http',
     CampaignService.init(id, function(campaign){
         $scope.campaign = campaign;
         $scope.campaign.from_address = campaign.integration;
+        // $scope.template_fields =  JSON.parse($scope.campaign.recipients[0].contents);
+        // console.log($scope.template_fields);
         //console.log($scope.campaign.reply.receive_flag)
         //$scope.message_content = $scope.campaign.message.body;
         //$scope.campaign.message = campaign.message;
@@ -42,6 +48,10 @@ app.controller('campaignController', ['$scope', '$rootScope', 'toastr', '$http',
         }
         //console.log($scope.campaign)
     });
+
+    CampaignService.allCampaigns(function(campaigns){
+        $scope.campaigns = campaigns;
+    })
 
 
     $scope.getClass = function (path) {
@@ -63,7 +73,7 @@ app.controller('campaignController', ['$scope', '$rootScope', 'toastr', '$http',
 
     $scope.new_campaign = function(){
     	console.log('new campaign');
-        $scope.campaign.id = 9;
+        $scope.campaign.id = 1;
         $location.path('/campaign-new/'+$scope.campaign.id+'/start');
 
     	// $CampaignService.newCampaign(function(campaign){
@@ -113,6 +123,28 @@ app.controller('campaignController', ['$scope', '$rootScope', 'toastr', '$http',
         //     }
         // });
         //
+
+        //validations
+        console.log('d::'+$scope.campaign.send_date)
+
+        if(typeof($scope.campaign.send_date) == 'undefined' || typeof($scope.campaign.send_hour) == 'undefined' || typeof($scope.campaign.send_min) == 'undefined' || typeof($scope.campaign.send_ap) == 'undefined'  ){
+            toastr.error('Error', 'Please enter all details');
+            return;
+        }
+        $scope.campaign.send_date_formatted = $scope.campaign.send_date.toISOString().substring(0, 10);
+
+        console.log('d::'+$scope.campaign.send_date_formatted)
+        console.log('h::'+$scope.campaign.send_hour)
+
+        CampaignService.save($scope.campaign, 'complete', function(response){
+            console.log(response);
+            if(response.status == 200){
+               toastr.success('Success', 'You campaign has been added to queue');
+            }else{
+                toastr.error('Error', 'Error processing campaign');
+            }
+        });
+
     }
 
     $scope.csv = {
@@ -125,6 +157,8 @@ app.controller('campaignController', ['$scope', '$rootScope', 'toastr', '$http',
         encodingVisible: true,
         uploadButtonLabel: "upload a csv file"
     };
+
+
     $scope.uploadCSV = function(){
         var rows = $scope.csv.result;
         console.log(rows)
@@ -149,12 +183,22 @@ app.controller('campaignController', ['$scope', '$rootScope', 'toastr', '$http',
             var recepit_rows ={filename:rows.filename, id:rows.id, rows:new_rows}
             console.log(recepit_rows)
             $scope.campaign.recipients.push(recepit_rows);
-            //$scope.recipient_headers = Object.keys(rows[0]);
+            $scope.recipient_headers = Object.keys(rows[0]);
 
             //console.log(JSON.stringify($scope.campaign));
         }
 
     };
+
+    $scope.update_template_fields = function(){
+        console.log('ccc'+JSON.stringify($scope.campaign));
+        for(camp in $scope.campaign.recipients){
+            var headers = $scope.campaign.recipients[camp].contents;
+            console.log(JSON.parse(headers));
+        }
+    }
+
+    
 
 
     $scope.removeRecipient = function(id){

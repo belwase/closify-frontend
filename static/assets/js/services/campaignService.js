@@ -1,10 +1,10 @@
-app.service('IntegrationService', function($http) {
+app.service('IntegrationService', function($http, $rootScope) {
     var integrations = [];
 
     function getAll(callback){
       if(integrations.length < 1){
 
-        var promise = $http.get('/api/user/integration/').then(function (response) {
+        var promise = $http.get($rootScope.API_URL+'/api/user/integration/').then(function (response) {
           integrations = response.data.results;
           callback(integrations)
           
@@ -17,7 +17,7 @@ app.service('IntegrationService', function($http) {
     return {getAll:getAll, integrations:integrations}
 });
 
-app.service('CampaignService', function($http) {
+app.service('CampaignService', function($http, $rootScope) {
 
     var data = {id:'', title:'', from_address:'', message:{}};
     // var properties = ['id', 'title'];
@@ -37,7 +37,7 @@ app.service('CampaignService', function($http) {
     // }
 
     function newCampaign(callback){
-        $http.post("/api/mass_mailer/campaign/" ).then(function (response) {
+        $http.post($rootScope.API_URL+"/api/mass_mailer/campaign/" ).then(function (response) {
                 cp = response.data;
                 callback(cp);
              });
@@ -46,7 +46,7 @@ app.service('CampaignService', function($http) {
     function init(id, callback){
       if(typeof(id) !== 'undefined'){
         data.id = id;
-        $http.get("/api/mass_mailer/campaign/"+id ).then(function (response) {
+        $http.get($rootScope.API_URL+"/api/mass_mailer/campaign/"+id ).then(function (response) {
                 cp = response.data;
                 callback(cp);
              });
@@ -58,16 +58,23 @@ app.service('CampaignService', function($http) {
      
     }
 
+    function allCampaigns(callback){
+      $http.get($rootScope.API_URL+"/api/mass_mailer/campaign/").then(function (response) {
+                cp = response.data.results;
+                callback(cp);
+      });
+    }
+
     function save(campaign, step='start', callback){
       console.log(JSON.stringify(campaign))
       var payload = campaign;
       payload.step = step;
-      $http.put("/api/mass_mailer/campaign/"+data.id+"/", payload).then(function(response){
+      $http.put($rootScope.API_URL+"/api/mass_mailer/campaign/"+data.id+"/", payload).then(function(response){
         callback(response);
       });
     }
 
-    return {newCampaign: newCampaign, save:save, init:init};
+    return {newCampaign: newCampaign, save:save, init:init, allCampaigns:allCampaigns};
 
     
     

@@ -96,3 +96,26 @@
     max-width: 600px;   
     margin-left: 200px;
 }
+
+table.mdl-data-table {
+    width: 100%;
+}
+
+
+.mdl-data-table {
+    position: relative;
+    border: 1px solid rgba(0,0,0,.12);
+    border-collapse: collapse;
+    white-space: nowrap;
+    font-size: 13px;
+    background-color: #fff;
+}
+
+.mdl-data-table td {
+    position: relative;
+    height: 48px;
+    border-top: 1px solid rgba(0,0,0,.12);
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    padding-top: 12px;
+    box-sizing: border-box;
+}

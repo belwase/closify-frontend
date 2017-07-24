@@ -16,8 +16,44 @@
                         <div class="card">
                             <div class="card-block">
                                 <h4 class="card-title">Campaigns</h4>
-                                <a class="btn-lg btn-danger" ng-click="new_campaign()"><strong>+ New Campaign</strong></a>
+                                <div class="row">
+                                    <a class="btn-lg btn-danger" ng-click="new_campaign()"><strong>+ New Campaign</strong></a>
+                                </div>
+
+                                <div class="row">
+                                    <table class="table table-striped mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                                        <thead>
+                                          <tr>
+                                            <th>Name</th>
+                                            <th>Recipients #</th>
+                                            
+                                            <th>Sent</th>
+                                            <th>Replies</th>
+                                            <th>Opens</th>
+                                            <th>Bounces</th>
+                                            <th>Created</th>
+                                            <th>Updated</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                         <tr ng-repeat="camp in campaigns">
+                                            <td class="mdl-data-table"><a href="campaign-new/{{camp.id}}/start">{{camp.title}}</a></td>
+                                            <td class="mdl-data-table">{{camp.num_recipients}}</td>
+                                            
+                                            <td class="mdl-data-table">{{camp.num_sent}}</td>
+                                            <td class="mdl-data-table">{{camp.num_reply}}</td>
+                                            <td class="mdl-data-table">{{camp.num_open}}</td>
+                                            <td class="mdl-data-table">{{camp.num_bounce}}</td>
+                                            <td class="mdl-data-table">{{camp.created}}</td>
+                                            <td class="mdl-data-table">{{camp.updated}}</td>
+                                         </tr>
+                                        </tbody>
+                                      </table>
+                                </div>
+
                             </div>
+
+                            
                         </div>
                     </div>
                     <!-- Column -->
